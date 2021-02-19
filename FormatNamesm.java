@@ -14,7 +14,7 @@ import java.io.File;
  * CSCU9T4 Java strings and files exercise.
  *
  */
-public class FilesInOut {
+public class FormatNamesm {
 
     public static void main(String[] args) {
         // Replace this with statements to set the file name (input) and file name (output).
