@@ -36,15 +36,14 @@ public class FilesInOut
 		// Finally, add code to read the filenames as arguments from the command line.
 
 		try {
-			File inputFile;
-			File outputFile;
-
-			//checking if file equals -u flag  	
+			File inputFile; //Input File
+			File outputFile; //Output File	
 
 			for(String arg:args)
 			{
-				if(args.equals("-")) 
+				if(args.equals("-")) //Still accepted 
 				{
+					//checking if file equals -u flag 
 					if (args[0].equals("-u"))
 
 					{
@@ -63,43 +62,48 @@ public class FilesInOut
 					Scanner input  = new Scanner(inputFile);
 
 					//creating Scanner output 
-					outputFile.createNewFile();  
+					outputFile.createNewFile(); //creating new output file 
 					FileWriter Writer new FileWriter(outputFile);
 
 					//Reading Scanner Input 
 					While(input.hasNextLine()){ 
-						String Firstname = input.next();
-						String Surname = input.next();
-						String date = input.next();
-
+						String Firstname = input.next(); //Reads Firstname
+						String Surname = input.next(); //Reads Surname
+						String date = input.next(); //Reads Date of Birth
+                                        
 						if(args[0].equals ("-u"))
 						{
-							Firstname.toUpperCase(); //Puts name in all caps 
+							Firstname.toUpperCase(); //Puts First name in all caps 
 							Surname.toUpperCase();// puts Last name in all caps
 
 						}
 						else {
-							Firstname.toLowerCase();  //reverts it back to lower case
-							Surname.toLowerCase();
+							Firstname.toLowerCase();  //reverts First name back to lower case
+							Surname.toLowerCase(); // reverts Surname back to Lower Case 
 						}
 
-						//Setting Pattern of Date of Birth
-						String datePattern = "MM-dd-yyyy"; //Configuring Date (//Month/Day/Year)
+						/* 
+						*String pattern for date of birth
+						*Using Simple Date Format
+						*Day/Month/Year
+                                                */  
+						
+						String datePattern = "MM-dd-yyyy"; 
 						SimpleDateFormat InputDate = new SimpleDateFormat(datePattern); //Input File
 						SimpleDateFormat outputDate = new SimpleDateFormat(datePattern); //Output File
 
 						//Configuring Date of Birth
 
 						try {
-							String Date_of_birth = InputDate.format(new Date());//Output Data
-							String date = outputDate.format(new Date());//Output Data
-							System.out.println(Firstname + " " + " "Surname + " "+ date);
+							String Date_of_birth = InputDate.format(new Date());//Input Date
+							String date = outputDate.format(new Date());//Output Date
+							System.out.println(Firstname + " " + " "Surname + " "+ date); //Displaying Firstname, Surname, Date
 
 							//Catching any errors 
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-						writer.close();
+						writer.close(); //Close File 
 						
 			} // main
 
