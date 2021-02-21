@@ -22,15 +22,16 @@ public class FormatNamesm {
 
 	public static void main(String[] args) {
 		try {
-			File inputFile;
-			File outputFile;
+			File inputFile; //Input File
+			File outputFile; //Output File
 
 			//checking if file equals -u flag  	
 
 			for(String arg:args)
 			{
-				if(args.equals("-")) 
-				{
+				if(args.equals("-")) //still acceptable
+				{      
+					//checking if file equals -u flag  	
 					if (args[0].equals("-u"))
 
 					{
@@ -49,16 +50,16 @@ public class FormatNamesm {
 					Scanner input  = new Scanner(inputFile);
 
 					//creating Scanner output 
-					outputFile.createNewFile();  
+					outputFile.createNewFile();  //Creating new output File
 					FileWriter Writer new FileWriter(outputFile);
 
 
 					//Reading Scanner Input 
 					While(input.hasNextLine()){ 
 
-						String Firstname = input.next();
-						String Surname = input.next();
-						String MiddleName = "";
+						String Firstname = input.next(); //Scans Firstname 
+						String Surname = input.next();  //Scans Surname
+						String MiddleName = "";         //Scans Middle name
 
 
 						if(args[0].equals ("-u"))
@@ -68,11 +69,16 @@ public class FormatNamesm {
 							MiddleName.toUpperCase();// Puts Middle name in all caps if there
 						}
 						else {
-							Firstname.toLowerCase();  //reverts it back to lower case
-							Surname.toLowerCase();
+							Firstname.toLowerCase();  //reverts Firstname back to lower case
+							Surname.toLowerCase();    //reverts Surname back to lower case
 						}
 
-						//Setting Pattern of Date of Birth
+						/* 
+						*String pattern for date of birth
+						*Using Simple Date Format
+						*Day/Month/Year
+                                                */  
+						
 						String datePattern = "MM-dd-yyyy"; //Configuring Date (//Month/Day/Year)
 						SimpleDateFormat InputDate = new SimpleDateFormat(datePattern); //Input File
 						SimpleDateFormat outputDate = new SimpleDateFormat(datePattern); //Output File
@@ -80,12 +86,14 @@ public class FormatNamesm {
 						//Configuring Date of Birth
 
 						try {
-							String Date_of_birth = InputDate.format(new Date());//Output Data
-							String date = outputDate.format(new Date());//Output Data
+							String Date_of_birth = InputDate.format(new Date());//Input Date
+							String date = outputDate.format(new Date());//Output Date
 
-							//checking if person has a middle name 
-
-							//checking if Middle name is there
+							/* 
+						       *Checks if person has a middle name by splitting the strings
+						       *@returns Middle name along with results 
+						       *If middle name is not found firstname and surname only returned
+                                                       */  
 							int firstSpace = Firstname.indexOf(" ");
 							Firstname =Firstname.substring(0,firstSpace);
 
@@ -94,22 +102,24 @@ public class FormatNamesm {
 
 							if(lastSpace<0) {
 								Surname =Surname.substring(lastSpace + 1);
-								System.out.println(Firstname + ","+ Surname);
+								System.out.println(Firstname + ","+ Surname); //Middle name not found
 							}
 
 							else {
 								MiddleName = MiddleName.substring(firstSpace, lastSpace);
 								Surname = Surname.substring(lastSpace + 1);
+								
+								//displays results with middle name found
 								System.out.println(Firstname + "," + MiddleName.charAt(1) + "," + Surname + date );
+								
 							}
-
 
 
 							//Catching any errors 
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-						writer.close();
+						writer.close(); //close file
 
 
 
