@@ -93,7 +93,7 @@ public class FilesInOut
 						try {
 							String Date_of_birth = InputDate.format(new Date());//Output Data
 							String date = outputDate.format(new Date());//Output Data
-							System.out.println(Firstname + Surname + outputDate);
+							System.out.println(Firstname + " " + " "Surname + " "+ date);
 
 							//Catching any errors 
 						} catch (Exception e) {
