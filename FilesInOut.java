@@ -35,16 +35,26 @@ public class FilesInOut
 
 		// Finally, add code to read the filenames as arguments from the command line.
 
+	
 		try {
-			File inputFile; //Input File
-			File outputFile; //Output File	
-
 			for(String arg:args)
 			{
 				if(args.equals("-")) //Still accepted 
 				{
+					
+					{
+					        inputFile = new File(args[1]);
+						outputFile = new File(args[2]);
+					}
+
+					else 
+					{
+						inputFile = new File(args[0]); //rearranging files to be in correct order
+						outputFile = new File(args[1]);
+					}
+					
 					//checking if file equals -u flag 
-					if (args[0].equals("-u"))
+					else if (args[0].equals("-u"))
 
 					{
 						inputFile = new File(args[1]);
@@ -56,15 +66,16 @@ public class FilesInOut
 						inputFile = new File(args[0]); //rearranging files to be in correct order
 						outputFile = new File(args[1]);
 					}
-
+					else if(inputFile==null) inputFile= arg;
+					else of(outputFile==null) outputFile = arg; //checks if file is empty 
+				        }
+				
+				        File file = new File("OutputFile.txt"); 
+				        FileWriter writer = new FileWriter(OutputFile); //Creating new OutputFile
+				        writer.close(); //Close FileWriter
+				
 					//Creating Scanner Input
-					
 					Scanner input  = new Scanner(inputFile);
-
-					//creating Scanner output 
-					outputFile.createNewFile(); //creating new output file 
-					FileWriter Writer new FileWriter(outputFile);
-
 					//Reading Scanner Input 
 					While(input.hasNextLine()){ 
 						String Firstname = input.next(); //Reads Firstname
@@ -103,7 +114,7 @@ public class FilesInOut
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-						writer.close(); //Close File 
+                                       
 						
 			} // main
 
