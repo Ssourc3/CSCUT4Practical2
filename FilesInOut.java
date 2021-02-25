@@ -43,7 +43,7 @@ public class FilesInOut
 				{
 					
 					{
-					    inputFile = new File(args[1]);
+					    inputFile = new File(args[1]); //create new Input File
 						outputFile = new File(args[2]);
 					}
 
@@ -57,7 +57,7 @@ public class FilesInOut
 					else if (args[0].equals("-u"))
 
 					{
-						inputFile = new File(args[1]);
+						inputFile = new File(args[1]); //create new Output File
 						outputFile = new File(args[2]);
 					}
 
@@ -67,7 +67,7 @@ public class FilesInOut
 						outputFile = new File(args[1]);
 					}
 					else if(inputFile==null) inputFile= arg;
-					else of(outputFile==null) outputFile = arg; //checks if file is empty 
+					else of(outputFile==null) outputFile = arg; //checks if file is empty/invalid 
 				        }
 				
 				        File file = new File("OutputFile.txt"); 
