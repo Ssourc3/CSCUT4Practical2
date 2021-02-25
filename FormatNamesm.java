@@ -109,7 +109,7 @@ public class FormatNamesm {
 							int lastSpace = Surname.lastIndexOf(" ", firstSpace);
 							String middleName = MiddleName.substring(firstSpace,lastSpace);
 
-							if(lastSpace == 0) {
+							if(lastSpace <0) {
 								Surname =Surname.substring(lastSpace + 1);
 								System.out.println(Firstname + ","+ Surname); //Middle name not found
 							}
